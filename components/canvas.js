@@ -3,13 +3,13 @@ import React from 'react';
 function useCanvas(draw) {
   const canvasRef = React.useRef(null);
 
-  const preDraw = (context, canvas) => {
+  const preDraw = ({ context, canvas }) => {
     const { height, width } = canvas.getBoundingClientRect();
-    resizeCanvasToDisplaySize(canvas, width, height);
+    resizeCanvasToDisplaySize({ canvas, width, height });
     context.clearRect(0, 0, width, height);
   };
 
-  const resizeCanvasToDisplaySize = (canvas, width, height) => {
+  const resizeCanvasToDisplaySize = ({ canvas, width, height }) => {
     if (canvas.height !== height || canvas.width !== width) {
       const { devicePixelRatio: ratio = 1 } = window;
       const context = canvas.getContext('2d');
@@ -27,9 +27,9 @@ function useCanvas(draw) {
 
     const render = () => {
       frameCount++;
-      preDraw(context, canvas);
+      preDraw({ context, canvas });
       const { height, width } = canvas.getBoundingClientRect();
-      draw(context, width, height, frameCount);
+      draw({ context, width, height, frameCount });
       animationFrameId = window.requestAnimationFrame(render);
     };
     render();
