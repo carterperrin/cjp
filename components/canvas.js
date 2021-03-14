@@ -28,7 +28,8 @@ function useCanvas(draw) {
     const render = () => {
       frameCount++;
       preDraw(context, canvas);
-      draw(context, frameCount);
+      const { height, width } = canvas.getBoundingClientRect();
+      draw(context, width, height, frameCount);
       animationFrameId = window.requestAnimationFrame(render);
     };
     render();
