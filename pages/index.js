@@ -14,7 +14,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <nav className={styles.header}>
-        <a href="" target="_blank" className={styles.link}>
+        <a
+          href="/carter_perrin_resume.pdf"
+          target="_blank"
+          className={styles.link}
+        >
           resume
         </a>
         <a
