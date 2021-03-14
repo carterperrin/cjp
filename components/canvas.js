@@ -44,5 +44,9 @@ function useCanvas(draw) {
 
 export default function Canvas({ draw, ...rest }) {
   const canvasRef = useCanvas(draw);
-  return <canvas ref={canvasRef} {...rest} />;
+  return (
+    <canvas ref={canvasRef} {...rest}>
+      <div>HI THERE</div>
+    </canvas>
+  );
 }

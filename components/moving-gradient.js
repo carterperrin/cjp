@@ -4,8 +4,8 @@ import Canvas from './canvas';
 
 const PI2 = Math.PI * 2;
 const TOTAL_PARTICLES = 15;
-const MIN_RADIUS = 1200;
-const MAX_RADIUS = 600;
+const MIN_RADIUS = 800;
+const MAX_RADIUS = 300;
 const COLORS = [
   { r: 45, g: 75, b: 277 }, // blue
   { r: 250, g: 255, b: 89 }, // yellow
@@ -21,8 +21,8 @@ class Particle {
     this.y = y;
     this.radius = radius;
     this.rgb = rgb;
-    this.vx = Math.random() * 4;
-    this.vy = Math.random() * 4;
+    this.vx = Math.random() * 10;
+    this.vy = Math.random() * 10;
     this.sinValue = Math.random();
   }
 
@@ -73,7 +73,7 @@ class Particle {
   }
 }
 
-export default function MovingGradient() {
+export default function MovingGradient({ children }) {
   let particles = [];
 
   const createParticles = ({ width, height }) => {
