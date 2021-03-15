@@ -4,8 +4,6 @@ import Canvas from './canvas';
 
 const PI2 = Math.PI * 2;
 const TOTAL_PARTICLES = 20;
-const MIN_RADIUS = 800;
-const MAX_RADIUS = 300;
 const COLORS = [
   { r: 45, g: 75, b: 277 }, // blue
   { r: 250, g: 255, b: 89 }, // yellow
@@ -76,7 +74,11 @@ class Particle {
 export default function MovingGradient({ children }) {
   let particles = [];
 
-  const createParticles = ({ width, height, speed }) => {
+  const createParticles = ({ width, height }) => {
+    const large = window.screen.width > 600;
+    const maxRadius = large ? 800 : 400;
+    const minRadius = large ? 300 : 200;
+    const speed = large ? 10 : 2;
     let curColor = 0;
     particles = [];
 
@@ -84,7 +86,7 @@ export default function MovingGradient({ children }) {
       const particle = new Particle({
         x: Math.random() * height,
         y: Math.random() * width,
-        radius: Math.random() * (MAX_RADIUS - MIN_RADIUS) + MIN_RADIUS,
+        radius: Math.random() * (maxRadius - minRadius) + minRadius,
         rgb: COLORS[curColor],
         speed,
       });
@@ -98,8 +100,7 @@ export default function MovingGradient({ children }) {
 
   const draw = ({ context, width, height }) => {
     if (!particles.length) {
-      const speed = window.screen.width > 600 ? 10 : 2;
-      createParticles({ width, height, speed });
+      createParticles({ width, height });
     }
 
     for (let particle of particles) {
