@@ -5,12 +5,11 @@ import Canvas from './canvas';
 const PI2 = Math.PI * 2;
 const TOTAL_PARTICLES = 20;
 const COLORS = [
-  { r: 45, g: 75, b: 277 }, // blue
-  { r: 250, g: 255, b: 89 }, // yellow
-  { r: 255, g: 104, b: 248 }, // purple
-  { r: 44, g: 209, b: 252 }, // sky blue
-  { r: 54, g: 233, b: 84 }, // green
-  { r: 255, g: 192, b: 203 }, // pink
+  { r: 255, g: 190, b: 11 },
+  { r: 251, g: 86, b: 7 },
+  { r: 255, g: 0, b: 110 },
+  { r: 131, g: 56, b: 236 },
+  { r: 58, g: 134, b: 255 },
 ];
 
 class Particle {
