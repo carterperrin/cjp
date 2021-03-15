@@ -16,13 +16,13 @@ const COLORS = [
 ];
 
 class Particle {
-  constructor({ x, y, radius, rgb }) {
+  constructor({ x, y, radius, rgb, speed = 10 }) {
     this.x = x;
     this.y = y;
     this.radius = radius;
     this.rgb = rgb;
-    this.vx = Math.random() * 10;
-    this.vy = Math.random() * 10;
+    this.vx = Math.random() * speed;
+    this.vy = Math.random() * speed;
     this.sinValue = Math.random();
   }
 
@@ -76,7 +76,7 @@ class Particle {
 export default function MovingGradient({ children }) {
   let particles = [];
 
-  const createParticles = ({ width, height }) => {
+  const createParticles = ({ width, height, speed }) => {
     let curColor = 0;
     particles = [];
 
@@ -86,6 +86,7 @@ export default function MovingGradient({ children }) {
         y: Math.random() * width,
         radius: Math.random() * (MAX_RADIUS - MIN_RADIUS) + MIN_RADIUS,
         rgb: COLORS[curColor],
+        speed,
       });
 
       if (++curColor >= COLORS.length) {
@@ -97,7 +98,8 @@ export default function MovingGradient({ children }) {
 
   const draw = ({ context, width, height }) => {
     if (!particles.length) {
-      createParticles({ width, height });
+      const speed = window.screen.width > 600 ? 10 : 2;
+      createParticles({ width, height, speed });
     }
 
     for (let particle of particles) {

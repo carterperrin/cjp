@@ -5,6 +5,13 @@
   margin-top: 1rem;
 }
 
+@media screen and (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
 .link {
   font-size: 1.5rem;
   font-family: "montserrat";
@@ -15,7 +22,6 @@
   margin-right: 2rem;
   z-index: 1;
   color: white;
-  /* mix-blend-mode: difference; */
 }
 .link:hover {
   opacity: 1;
