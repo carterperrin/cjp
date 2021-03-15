@@ -3,7 +3,7 @@ import React from 'react';
 import Canvas from './canvas';
 
 const PI2 = Math.PI * 2;
-const TOTAL_PARTICLES = 15;
+const TOTAL_PARTICLES = 20;
 const MIN_RADIUS = 800;
 const MAX_RADIUS = 300;
 const COLORS = [
