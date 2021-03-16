@@ -70,14 +70,14 @@ class Particle {
   }
 }
 
-export default function MovingGradient({ children }) {
+export default function MovingGradient() {
   let particles = [];
 
   const createParticles = ({ width, height }) => {
     const large = window.screen.width > 600;
     const maxRadius = large ? 800 : 400;
     const minRadius = large ? 300 : 200;
-    const speed = large ? 10 : 2;
+    const speed = large ? 8 : 2;
     let curColor = 0;
     particles = [];
 

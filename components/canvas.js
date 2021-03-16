@@ -1,35 +1,33 @@
 import React from 'react';
 
-function useCanvas(draw) {
+export default function Canvas({ draw, ...rest }) {
   const canvasRef = React.useRef(null);
 
   const preDraw = ({ context, canvas }) => {
+    resizeCanvasToDisplaySize(canvas);
     const { height, width } = canvas.getBoundingClientRect();
-    resizeCanvasToDisplaySize({ canvas, width, height });
     context.clearRect(0, 0, width, height);
   };
 
-  const resizeCanvasToDisplaySize = ({ canvas, width, height }) => {
-    if (canvas.height !== height || canvas.width !== width) {
-      const { devicePixelRatio: ratio = 1 } = window;
-      const context = canvas.getContext('2d');
-      canvas.width = width * ratio;
-      canvas.height = height * ratio;
-      context.scale(ratio, ratio);
+  const resizeCanvasToDisplaySize = (canvas) => {
+    if (
+      canvas.height !== window.innerHeight ||
+      canvas.width !== window.innerWidth
+    ) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
   };
 
   React.useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
-    let frameCount = 0;
     let animationFrameId;
 
     const render = () => {
-      frameCount++;
       preDraw({ context, canvas });
-      const { height, width } = canvas.getBoundingClientRect();
-      draw({ context, width, height, frameCount });
+      const { height, width } = canvas;
+      draw({ context, width, height });
       animationFrameId = window.requestAnimationFrame(render);
     };
     render();
@@ -38,15 +36,5 @@ function useCanvas(draw) {
       window.cancelAnimationFrame(animationFrameId);
     };
   }, [draw]);
-
-  return canvasRef;
-}
-
-export default function Canvas({ draw, ...rest }) {
-  const canvasRef = useCanvas(draw);
-  return (
-    <canvas ref={canvasRef} {...rest}>
-      <div>HI THERE</div>
-    </canvas>
-  );
+  return <canvas ref={canvasRef} {...rest} />;
 }
