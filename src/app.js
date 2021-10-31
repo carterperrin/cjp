@@ -3,9 +3,9 @@ import Particle from './particle';
 const TOTAL_PARTICLES = 20;
 const COLORS = [
   { r: 255, g: 190, b: 11 },
+  { r: 131, g: 56, b: 236 },
   { r: 251, g: 86, b: 7 },
   { r: 255, g: 0, b: 110 },
-  { r: 131, g: 56, b: 236 },
   { r: 58, g: 134, b: 255 },
 ];
 const canvas = document.getElementById('canvas');
