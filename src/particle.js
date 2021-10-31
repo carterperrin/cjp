@@ -1,7 +1,7 @@
 const PI2 = Math.PI * 2;
 
 export default class Particle {
-  constructor({ x, y, radius, rgb, speed = 10 }) {
+  constructor({ x, y, radius, rgb, speed = 2 }) {
     this.x = x;
     this.y = y;
     this.radius = radius;

@@ -14,9 +14,8 @@ const { height, width } = canvas;
 let particles = [];
 
 const createParticles = () => {
-  const maxRadius = 200;
-  const minRadius = 100;
-  const speed = 2;
+  const maxRadius = 250;
+  const minRadius = 75;
   let curColor = 0;
   particles = [];
 
@@ -26,7 +25,6 @@ const createParticles = () => {
       y: Math.random() * height,
       radius: Math.random() * (maxRadius - minRadius) + minRadius,
       rgb: COLORS[curColor],
-      speed,
     });
 
     if (++curColor >= COLORS.length) {
