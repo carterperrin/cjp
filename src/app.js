@@ -14,8 +14,8 @@ const { height, width } = canvas;
 let particles = [];
 
 const createParticles = () => {
-  const maxRadius = 150;
-  const minRadius = 75;
+  const maxRadius = 200;
+  const minRadius = 100;
   const speed = 2;
   let curColor = 0;
   particles = [];
