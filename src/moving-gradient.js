@@ -1,6 +1,4 @@
-import React from 'react';
-
-import Canvas from './canvas';
+import Canvas from '../components/canvas';
 
 const PI2 = Math.PI * 2;
 const TOTAL_PARTICLES = 20;
@@ -23,7 +21,7 @@ class Particle {
     this.sinValue = Math.random();
   }
 
-  animate({ context, width, height }) {
+  animate({ context, width, height, frameCount }) {
     this.sinValue += 0.01;
     this.radius += Math.sin(this.sinValue);
     this.x += this.vx;
@@ -97,13 +95,13 @@ export default function MovingGradient() {
     }
   };
 
-  const draw = ({ context, width, height }) => {
+  const draw = ({ context, width, height, frameCount }) => {
     if (!particles.length) {
       createParticles({ width, height });
     }
 
     for (let particle of particles) {
-      particle.animate({ context, width, height });
+      particle.animate({ context, width, height, frameCount });
     }
   };
 

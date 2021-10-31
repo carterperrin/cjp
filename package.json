@@ -2,15 +2,13 @@
   "name": "carterperrin",
   "version": "0.1.0",
   "private": true,
+  "source": "src/index.html",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "parcel build",
+    "start": "parcel"
   },
-  "dependencies": {
-    "next": "10.0.8",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "typeface-montserrat": "^1.1.13"
-  }
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }
