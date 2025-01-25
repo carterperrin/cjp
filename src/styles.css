@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
+html {
+  background-color: black;
+}
+
 html,
 body {
   padding: 0;
